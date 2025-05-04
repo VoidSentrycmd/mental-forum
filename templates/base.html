@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Гармония ума{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1><a href="{% url 'threads:thread_list' %}">Гармония ума</a></h1>
+            <nav>
+                <a href="{% url 'threads:thread_list' %}">Главная</a>
+                <a href="{% url 'threads:profile' %}">Профиль</a>
+                <a href="{% url 'threads:about' %}">О форуме</a>
+                <a href="{% url 'threads:rules' %}">Правила</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'users:logout' %}">Выход</a>
+                {% else %}
+                    <a href="{% url 'users:login' %}">Вход</a>
+                    <a href="{% url 'users:register' %}">Регистрация</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

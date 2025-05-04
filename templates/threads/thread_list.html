@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Все треды — Гармония ума{% endblock %}
+
+{% block content %}
+  <div class="thread-list">
+    <h1 class="text-2xl font-bold mb-4">Список тредов</h1>
+    {% if threads %}
+      <ul class="space-y-4">
+        {% for thread in threads %}
+          <li class="p-4 bg-white rounded shadow">
+            <a href="{% url 'threads:thread_detail' thread.pk %}" class="text-lg font-semibold">{{ thread.title }}</a>
+            <p class="text-sm text-gray-600">Автор: {{ thread.author.username }} | {{ thread.created_at|date:"d.m.Y H:i" }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Пока нет тредов. Будьте первым!</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+      <div class="mt-6">
+        <a href="{% url 'threads:thread_create' %}" class="btn">Создать новый тред</a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

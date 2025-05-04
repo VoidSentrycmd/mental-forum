@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ thread.title }} — Гармония ума{% endblock %}
+
+{% block content %}
+<div class="thread-detail">
+    <h2>{{ thread.title }}</h2>
+    <p>{{ thread.content }}</p>
+    <p class="meta">Создано: {{ thread.created_at|date:"d.m.Y H:i" }}</p>
+
+    {% if user == thread.author %}
+    <div class="thread-actions">
+        <a href="{% url 'threads:thread_update' thread.pk %}" class="btn">Редактировать</a>
+        <a href="{% url 'threads:thread_delete' thread.pk %}" class="btn btn-danger">Удалить</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

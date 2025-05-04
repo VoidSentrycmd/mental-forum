@@ -1,0 +1,124 @@
+/* Общие настройки */
+body {
+    background-color: #121212;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Навигационная панель */
+.navbar {
+    background-color: #1f1f1f;
+    padding: 15px 0;
+}
+
+.navbar h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 26px;
+}
+
+.navbar nav {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.navbar nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+}
+
+/* Основной контент */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.thread-list .card,
+.thread-detail,
+.form-container,
+.confirm-delete,
+.about-page,
+.rules-page,
+.profile-page {
+    background-color: #1e1e1e;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.card h3 a {
+    color: #5ea4f3;
+    text-decoration: none;
+}
+
+.card h3 a:hover {
+    text-decoration: underline;
+}
+
+.meta {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type=\"text\"],
+input[type=\"email\"],
+input[type=\"password\"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    background-color: #2b2b2b;
+    color: #eee;
+    border-radius: 8px;
+}
+
+input[type=\"submit\"],
+button {
+    cursor: pointer;
+}

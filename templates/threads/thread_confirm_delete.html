@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить тред — Гармония ума{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Удалить тред</h2>
+    <p>Вы уверены, что хотите удалить тред "<strong>{{ object.title }}</strong>"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{% url 'threads:thread_list' %}" class="btn">Отмена</a>
+    </form>
+</div>
+{% endblock %}
