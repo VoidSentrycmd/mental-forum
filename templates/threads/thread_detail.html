@@ -4,15 +4,43 @@
 
 {% block content %}
 <div class="thread-detail">
-    <h2>{{ thread.title }}</h2>
-    <p>{{ thread.content }}</p>
-    <p class="meta">Создано: {{ thread.created_at|date:"d.m.Y H:i" }}</p>
+  <h2>{{ thread.title }}</h2>
+  <p>{{ thread.content }}</p>
+  <p class="meta">Создано: {{ thread.created_at|date:"d.m.Y H:i" }}</p>
 
-    {% if user == thread.author %}
+  {% if user == thread.author %}
     <div class="thread-actions">
-        <a href="{% url 'threads:thread_update' thread.pk %}" class="btn">Редактировать</a>
-        <a href="{% url 'threads:thread_delete' thread.pk %}" class="btn btn-danger">Удалить</a>
+      <a href="{% url 'threads:thread_update' thread.pk %}" class="btn">Редактировать</a>
+      <a href="{% url 'threads:thread_delete' thread.pk %}" class="btn btn-danger">Удалить</a>
     </div>
-    {% endif %}
+  {% endif %}
+
+  <hr>
+
+  <h3>Комментарии</h3>
+  <div class="comments">
+    {% for comment in thread.comments.all %}
+      <div class="comment">
+        <p>
+          <strong>{{ comment.author.username }}</strong>
+          — {{ comment.created_at|date:"d.m.Y H:i" }}
+        </p>
+        <p>{{ comment.content }}</p>
+      </div>
+    {% empty %}
+      <p>Пока нет комментариев.</p>
+    {% endfor %}
+  </div>
+
+  {% if user.is_authenticated %}
+    <h4 class="mt-4">Оставить комментарий</h4>
+    <form method="post" action="{% url 'threads:add_comment' thread.pk %}">
+      {% csrf_token %}
+      <textarea name="content" rows="4" class="form-control" required></textarea>
+      <button type="submit" class="btn btn-primary mt-2">Добавить комментарий</button>
+    </form>
+  {% else %}
+    <p>Пожалуйста, <a href="{% url 'users:login' %}">войдите</a>, чтобы оставить комментарий.</p>
+  {% endif %}
 </div>
 {% endblock %}
