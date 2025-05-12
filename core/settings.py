@@ -24,15 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sxkj_i2xm7d7t)y95%v45y2h(xr%&m-@lz&umqqncl5jf*@yr5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['mental-forum.onrender.com',]
-=======
-ALLOWED_HOSTS = [
-    'mental-forum.onrender.com',
-                 ]
->>>>>>> 34c7600 (Configure WhiteNoise middleware and STATIC settings)
+DEBUG = False
+ALLOWED_HOSTS = ['mental-forum.onrender.com']
 
 
 # Application definition
@@ -137,3 +130,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
