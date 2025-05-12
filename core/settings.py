@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,13 @@ SECRET_KEY = 'django-insecure-sxkj_i2xm7d7t)y95%v45y2h(xr%&m-@lz&umqqncl5jf*@yr5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['mental-forum.onrender.com',]
+=======
+ALLOWED_HOSTS = [
+    'mental-forum.onrender.com',
+                 ]
+>>>>>>> 34c7600 (Configure WhiteNoise middleware and STATIC settings)
 
 
 # Application definition
@@ -39,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # apps
     'apps.users',
-    'apps.threads'
+    'apps.threads',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
